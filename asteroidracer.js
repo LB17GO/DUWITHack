@@ -205,6 +205,7 @@ function update() {
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+  drawGrid(50);
 });
 
 setInterval(generateItem, 2000);

@@ -92,21 +92,45 @@ function generateItem() {
 }
 
 function checkCollision(rocket, object) {
+  // Rocket's bounding box
   const rocketLeft = rocket.x;
   const rocketRight = rocket.x + rocketWidth;
   const rocketTop = rocket.y;
   const rocketBottom = rocket.y + rocketHeight;
 
+  // Object's bounding box
   const objectLeft = object.x - object.size / 2;
   const objectRight = object.x + object.size / 2;
   const objectTop = object.y - object.size / 2;
   const objectBottom = object.y + object.size / 2;
 
-  return rocketRight > objectLeft &&
-         rocketLeft < objectRight &&
-         rocketBottom > objectTop &&
-         rocketTop < objectBottom;
+  // Buffer zone (a little larger margin for leniency)
+  const margin = 20;
+
+  // Adjusted collision detection to require proximity before triggering
+  const isCloseEnough = rocketRight - margin > objectLeft &&
+                        rocketLeft + margin < objectRight &&
+                        rocketBottom - margin > objectTop &&
+                        rocketTop + margin < objectBottom;
+
+  // Additional check to make sure we're not just moving into an object's path
+  if (isCloseEnough) {
+    // Check if the rocket's movement is in the object's line of travel
+    // (e.g., the rocket is moving downward, and the object is below)
+    if (rocketY < object.y && downKey) {
+      return true; // Collision when moving down into an object
+    }
+    // Check if the rocket is moving upward into an object
+    if (rocketY + rocketHeight > object.y && upKey) {
+      return true; // Collision when moving up into an object
+    }
+  }
+
+  return false;
 }
+
+
+
 
 function startTimer() {
   if (gameOver) return; // Don't start the timer if the game is over

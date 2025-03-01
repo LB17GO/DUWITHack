@@ -1,6 +1,12 @@
-// Handle click events on rocket parts
+// click events on rocket parts
 document.getElementById("rocket-body").addEventListener("click", function() {
-    
+    /*when clicked goes to mini game*/
+
+    if(Won === true){ /* just an example*/
+        document.getElementById("rocket-body").classList.add("completed-body") 
+        /*this will colour in element*/
+    }
+
 });
   
 document.getElementById("rocket-nose").addEventListener("click", function() {

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Beat the Asteroids at Math!</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background-image: url('https://github.com/LB17GO/DUWITHack/raw/main/Sprites/Backgrounds/Asset%20Pack%20-%20space%20bgs/Assets/Blue%20Version/layered/bffede1d81ebe6ddb2eb3033dc86ac68.gif'); 
+            background-size: cover;
+            color:#fff;
+            margin-top:40px;
+            background-repeat: no-repeat; 
+    }
+    #game-container {
+      position: relative;
+      width: 400px;
+      height: 600px;
+      border: 10px ridge #ccc;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+    .asteroid {
+      position: absolute;
+      width: 75px;
+      height: 75px;
+      background-image: url('https://github.com/LB17GO/DUWITHack/blob/main/Sprites/Backgrounds/Asset%20Pack%20-%20space%20bgs/Assets/Blue%20Version/layered/asteroid-1.png?raw=true'); /* Replace with your asteroid image */
+      background-size: cover;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 50px;
+      color: white;
+      font-weight: bold;
+      top: -50px;
+      transition: top 5s linear;
+    }
+    #lives {
+      margin-bottom: 10px;
+    }
+    #lives img {
+      width: 30px;
+      height: 30px;
+    }
+    #game-over {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 5px;
+      border: 1px solid #ccc;
+      display: none;
+    }
+    #play-button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Asteroid Math Game</h1>
+  <button id="play-button">Play Now</button>
+  <div id="lives"></div>
+  <div id="game-container"></div>
+  <div id="game-over">
+    <h2>Game Over</h2>
+    <p id="game-over-message"></p>
+    <button onclick="location.reload()">Play Again</button>
+  </div>
+
+  <script>
+    const gameContainer = document.getElementById("game-container");
+    const livesContainer = document.getElementById("lives");
+    const gameOverDisplay = document.getElementById("game-over");
+    const gameOverMessage = document.getElementById("game-over-message");
+    const playButton = document.getElementById("play-button");
+    let lives = 3;
+    let asteroids = [];
+    let currentAsteroidIndex = 0;
+    let wrongAnswers = 0;
+    let missedAsteroids = 0;
+
+    function createAsteroid() {
+      if (currentAsteroidIndex >= 10) {
+        gameOver("You answered all questions!");
+        return;
+      }
+
+      const num1 = Math.floor(Math.random() * 10);
+      const num2 = Math.floor(Math.random() * 10);
+      const answer = num1 + num2;
+
+      const asteroid = document.createElement("div");
+      asteroid.classList.add("asteroid");
+      asteroid.textContent = `${num1} + ${num2}`;
+      asteroid.style.left = `${Math.random() * 250}px`;
+      asteroid.dataset.answer = answer;
+
+      gameContainer.appendChild(asteroid);
+      asteroids.push(asteroid);
+
+      setTimeout(() => {
+        asteroid.style.top = "550px";
+      }, 100);
+
+      setTimeout(() => {
+        if (asteroid.parentElement) {
+          gameContainer.removeChild(asteroid);
+          missedAsteroids++;
+          loseLife();
+          if (missedAsteroids >= 3) gameOver("You missed too many asteroids!");
+          if (lives > 0) createAsteroid();
+        }
+      }, 5100);
+
+      asteroid.addEventListener("click", () => {
+        const userAnswer = prompt("Enter the answer:");
+        if (userAnswer === asteroid.dataset.answer) {
+          gameContainer.removeChild(asteroid);
+          currentAsteroidIndex++;
+          createAsteroid();
+        } else {
+          wrongAnswers++;
+          loseLife();
+          if (wrongAnswers >= 3) gameOver("You got too many wrong answers!");
+        }
+      });
+    }
+
+    function loseLife() {
+      lives--;
+      updateLives();
+      if (lives <= 0) {
+        gameOver("You ran out of lives!");
+      }
+    }
+
+    function updateLives() {
+      livesContainer.innerHTML = "";
+      for (let i = 0; i < lives; i++) {
+        const heart = document.createElement("img");
+        heart.src = "https://github.com/LB17GO/DUWITHack/blob/main/Sprites/Backgrounds/Asset%20Pack%20-%20space%20bgs/Assets/Blue%20Version/layered/6-pixel-heart-5.png?raw=true";
+        livesContainer.appendChild(heart);
+      }
+    }
+
+    function gameOver(message) {
+      gameOverMessage.textContent = message;
+      gameOverDisplay.style.display = "block";
+    }
+
+    function startGame() {
+      playButton.style.display = "none";
+      updateLives();
+      createAsteroid();
+    }
+
+    playButton.addEventListener("click", () => {
+      alert("Click on the falling asteroids and type in the answer as fast as you can - 3 mistakes or 3 missed asteroids and your rocket will collide!");
+      startGame();
+    });
+  </script>
+</body>
+</html>

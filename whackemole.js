@@ -9,6 +9,9 @@ backgroundImage.src = 'Purple_Nebula.png';
 const boxImage = new Image();
 boxImage.src = 'Purple_Nebula.png'; 
 
+const AlienImage = new Image();
+AlienImage.scr = "Alien.png"
+
 // Once the image is loaded, adjust the canvas size and draw the image
 backgroundImage.onload = function () {
   // Set the canvas size to match the window's size
@@ -47,8 +50,51 @@ function drawGrid(cellSize) {
     ctx.moveTo(gridX, y);
     ctx.lineTo(gridX + gridWidth, y);
     ctx.stroke();
-  } 
+  }
+  
+  for (let x = gridX; x < gridX + gridWidth; x += cellSize) {
+    for (let y = gridY; y < gridY + gridHeight; y += cellSize) {
+      drawEllipse(x + cellSize / 2, y + cellSize / 2, 40, 20); // Adjust ellipse size and position as needed
+    }
+  }
 }
+
+function drawEllipse(x, y, radius) {
+    ctx.beginPath();
+    ctx.ellipse(x, y, radius, radius / 2, 0, 0, Math.PI * 2);  // Draw ellipse at (x, y) with given radius
+    ctx.fillStyle = "black"; // Fill color
+    ctx.fill();
+    ctx.strokeStyle = "white"; // Outline color
+    ctx.stroke();
+}
+
+function randomAlien(){
+    let randomNumberX = Math.random() * 6;
+    let randomNumberY = Math.random() * 6;
+    placeImageInGrid(randomNumberX,randomNumberY);
+}
+
+function placeImageInGrid(row, col){
+    const cellSize = 100;
+
+    // Define the position of the top-left corner of the image in the grid
+    const gridWidth = 600;  // Width of the grid
+    const gridHeight = 600; // Height of the grid
+    const gridX = (canvas.width - gridWidth) / 2; // X position to center the grid
+    const gridY = (canvas.height - gridHeight) / 2; // Y position to center the grid
+
+    // Calculate the position of the image based on row and column
+    const imgX = gridX + col * cellSize;  // X position of the image in the grid
+    const imgY = gridY + row * cellSize;  // Y position of the image in the grid
+
+    // Draw the image at the calculated position
+    ctx.drawImage(AlienImage, imgX, imgY, cellSize, cellSize); 
+}
+
+document.getElementById("start_button").addEventListener("click", function(){
+    
+})
+
 
 window.addEventListener('resize', function() {
   // Resize canvas

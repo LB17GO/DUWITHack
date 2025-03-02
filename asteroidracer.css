@@ -3,3 +3,14 @@ canvas{
     width: 100%;
     height: 100%;
 }
+
+/* Timer container styles */
+#timer {
+    position: absolute;
+    top: 10px; /* Adjust to move slightly down from the top */
+    right: 10px; /* Adjust to move slightly left from the right edge */
+    font-size: 24px;
+    color: white;
+    z-index: 3; /* Ensure the timer is above the canvas */
+    font-family: Arial, sans-serif;
+  }

@@ -25,6 +25,7 @@
     color: white; /* Optional: Set the text color to white to make sure it's readable */
     }
 
+
 #rocket-container{
     display: flex;
     justify-content: center; /* Centers horizontally */
@@ -62,4 +63,19 @@
 
 .completed-booster-right{
     fill:grey;
+}
+
+#Reset_button{
+    
+    position: fixed; /* Fixed positioning keeps it in the same spot even when scrolling */
+    bottom: 20px; /* Distance from the bottom of the page */
+    right: 20px; /* Distance from the right side of the page */
+    padding: 10px 20px; /* Button padding */
+    font-size: 16px; /* Font size */
+    background-color: #503d5c; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Optional rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    
 }

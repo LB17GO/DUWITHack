@@ -100,6 +100,13 @@ function checkForMatch() {
         if(counter===6){
             gameOver=true;
             alert("You won the game!");
+            let MemoryBool = true;  // Or false, depending on your logic
+
+            // Store the boolean value in localStorage
+            localStorage.setItem('MemoryBool', MemoryBool);
+
+            // Redirect to the home page
+            window.location.href = '/public/index.html';  
         }
 
     } else {

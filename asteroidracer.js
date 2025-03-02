@@ -143,7 +143,14 @@ function startTimer() {
       clearInterval(timerInterval); // Stop the timer when it reaches 0
       alert("You Win! 2 minutes have passed.");
       gameOver = true;
-      return;
+      let RacerBool = true;  // Or false, depending on your logic
+
+      // Store the boolean value in localStorage
+      localStorage.setItem('RacerBool', RacerBool);
+
+      // Redirect to the home page
+      window.location.href = '/public/index.html';  
+      
     }
   }, 1000); // Update the timer every second
 }

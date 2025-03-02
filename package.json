@@ -1,0 +1,24 @@
+{
+  "name": "duwithack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LB17GO/DUWITHack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LB17GO/DUWITHack/issues"
+  },
+  "homepage": "https://github.com/LB17GO/DUWITHack#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

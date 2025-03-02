@@ -1,0 +1,65 @@
+/* Set the navbar background color to purple */
+.navbar {
+    background-color: #503d5c !important; /* Purple background */
+  }
+  
+  /* Ensure the text in the navbar is white */
+  .navbar .navbar-brand {
+    color: white !important; /* White text color */
+  }
+  
+  /* Button style */
+  .btnLogin {
+    background-color: #af92b5; /* Light purple button */
+    color: white; /* White text */
+    border: none;
+  }
+  
+  .btnLogin:hover {
+    background-color: #503d5c; /* Darker purple on hover */
+    color: white !important; /* Ensure text stays white on hover */
+  }
+  
+  body {
+    background-color: #af92b5; /* Purple background */
+    color: white; /* Optional: Set the text color to white to make sure it's readable */
+    }
+
+#rocket-container{
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 100vh;
+}
+
+.rocket-part:hover{
+    fill: #503d5c
+}
+
+.completed-body {
+    fill: #e7e8ea; /* Blue body when completed */
+}
+  
+.completed-nose {
+    fill: #ca1610; /* Red nose when completed */
+}
+  
+.completed-fin-left {
+    fill: #ca1610; /* Green fin when completed */
+}
+  
+.completed-fin-right {
+    fill: #ca1610; /* Green fin when completed */
+}
+
+.completed-window{
+    fill: rgb(75, 126, 237);
+}
+
+.completed-booster-left{
+    fill:grey;
+}
+
+.completed-booster-right{
+    fill:grey;
+}

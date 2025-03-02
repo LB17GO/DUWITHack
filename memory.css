@@ -1,0 +1,108 @@
+.canvas {
+    position: absolute; /* Position it behind the content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Make sure it stays behind the other elements */
+    display:block;
+}
+
+
+#timer {
+    position: absolute;
+    top: 20px;  /* Position the timer near the top */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: white;
+    z-index: 3; /* Ensure the timer is above the canvas */
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#counter {
+    position: absolute;
+    top: 70px;  /* Position the counter below the timer */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: white;
+    z-index: 3; /* Ensure the counter is above the canvas */
+    background: rgba(0, 0, 0, 0.7); /* Match the timer's background */
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Position grid-container on top of the canvas */
+#grid-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    perspective: 1000px;
+    z-index: 10; /* Ensure it's above the canvas */
+}
+
+/* Card container */
+.card {
+    width: 120px;
+    height: 160px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+/* Flipping effect */
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Inner structure */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+/* Front and back */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Front styling */
+.card-front {
+    background-color: #503d5c;
+    color: white;
+    font-size: 16px;
+}
+
+/* Back styling */
+.card-back {
+    background-color: #fff;
+    transform: rotateY(180deg);
+}
+
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+

@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('../Sprites/SortingGame/nebulaBG.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white; /* Change text color for better visibility */
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    flex-direction: column; /* Stack elements vertically */
+    margin: 0; /* Remove default margin */
+}
+#bins { display: flex; justify-content: space-around; margin: 20px; }
+.bin { width: 100px; height: 100px; border: 2px solid black; display: inline-block; margin: 5px;}
+#red { background-color: rgba(255, 0, 0, 0.7); } /* Semi-transparent for visibility */
+#blue { background-color: rgba(0, 0, 255, 0.7); }
+#green { background-color: rgba(0, 255, 0, 0.7); }
+#yellow { background-color: rgba(255, 255, 0, 0.7); }
+#purple { background-color: rgba(128, 0, 128, 0.7); }
+#orange { background-color: rgba(255, 165, 0, 0.7); }
+#asteroid {
+    width: 100px; /* Fixed size */
+    height: 100px; /* Fixed size */
+    margin: 20px;
+    cursor: pointer;
+    display: none;
+    animation: fadeIn 1.5s; /* Animation for appearance */
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+#gameOver { display: none; }
+#timer { position: absolute; top: 10px; right: 10px; }

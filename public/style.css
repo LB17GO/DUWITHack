@@ -25,6 +25,13 @@
     color: white; /* Optional: Set the text color to white to make sure it's readable */
     }
 
+.incomplete {
+    fill: none;
+    pointer-events: auto;
+}
+.complete {
+    pointer-events: none;
+}
 
 #rocket-container{
     display: flex;
@@ -33,36 +40,8 @@
     height: 100vh;
 }
 
-.rocket-part:hover{
+.incomplete:hover{
     fill: #503d5c
-}
-
-.completed-body {
-    fill: #e7e8ea; /* Blue body when completed */
-}
-  
-.completed-nose {
-    fill: #ca1610; /* Red nose when completed */
-}
-  
-.completed-fin-left {
-    fill: #ca1610; /* Green fin when completed */
-}
-  
-.completed-fin-right {
-    fill: #ca1610; /* Green fin when completed */
-}
-
-.completed-window{
-    fill: rgb(75, 126, 237);
-}
-
-.completed-booster-left{
-    fill:grey;
-}
-
-.completed-booster-right{
-    fill:grey;
 }
 
 #Reset_button{

@@ -260,7 +260,7 @@ game.update = function() {
         localStorage.setItem('InvadersBool', InvadersBool);
 
             // Redirect to the home page
-        window.location.href = '/public/index.html';  
+        window.location.href = '../index.html';
     }
 };
 
